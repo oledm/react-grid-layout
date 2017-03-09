@@ -39,7 +39,6 @@ var ResponsiveLocalStorageLayout = React.createClass({
   },
 
   render() {
-      console.log('render layout', this.state.layouts)
     return (
       <div>
         <button onClick={this.resetLayout}>Reset Layout</button>

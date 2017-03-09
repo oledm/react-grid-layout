@@ -29,7 +29,6 @@ class ShowcaseLayout extends React.Component {
 
   generateDOM() {
     return _.map(this.state.layouts.lg, function (l, i) {
-      console.log('item', l)
       return (
         <div key={i} isHidden={l.isHidden} className={l.static ? 'static' : ''}>
           {l.static ?
@@ -82,24 +81,14 @@ class ShowcaseLayout extends React.Component {
 module.exports = ShowcaseLayout;
 
 function generateLayout() {
-  return _.map(_.range(0, 5), function (item, i) {
+  return _.map(_.range(0, 25), function (item, i) {
     var y = Math.ceil(Math.random() * 4) + 1;
-    if (i === 2) return {
-      x: _.random(0, 5) * 2 % 12,
-      y: Math.floor(i / 6) * y,
-      w: 2,
-      h: y,
-      i: i.toString(),
-      isHidden: true,
-      static: Math.random() < 0.05
-    }
     return {
       x: _.random(0, 5) * 2 % 12,
       y: Math.floor(i / 6) * y,
       w: 2,
       h: y,
       i: i.toString(),
-      isHidden: false,
       static: Math.random() < 0.05
     };
   });

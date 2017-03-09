@@ -75,6 +75,7 @@ export default class GridItem extends React.Component {
     // Flags
     isDraggable: PropTypes.bool.isRequired,
     isResizable: PropTypes.bool.isRequired,
+    isHidden: PropTypes.bool,
     static: PropTypes.bool,
 
     // Use CSS transforms instead of top/left

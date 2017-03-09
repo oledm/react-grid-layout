@@ -5,7 +5,8 @@ var WidthProvider = require('react-grid-layout').WidthProvider;
 var ResponsiveReactGridLayout = require('react-grid-layout').Responsive;
 ResponsiveReactGridLayout = WidthProvider(ResponsiveReactGridLayout);
 
-const originalLayouts = getFromLS('layouts') || {};
+//const originalLayouts = getFromLS('layouts') || {};
+const originalLayouts = {};
 /**
  * This layout demonstrates how to sync multiple responsive layouts to localstorage.
  */
@@ -32,12 +33,13 @@ var ResponsiveLocalStorageLayout = React.createClass({
   },
 
   onLayoutChange(layout, layouts) {
-    saveToLS('layouts', layouts);
+//    saveToLS('layouts', layouts);
     this.setState({layouts});
     this.props.onLayoutChange(layout, layouts);
   },
 
   render() {
+      console.log('render layout', this.state.layouts)
     return (
       <div>
         <button onClick={this.resetLayout}>Reset Layout</button>
@@ -47,9 +49,9 @@ var ResponsiveLocalStorageLayout = React.createClass({
             layouts={this.state.layouts}
             onLayoutChange={this.onLayoutChange}>
           <div key="1" data-grid={{w: 2, h: 3, x: 0, y: 0}}><span className="text">1</span></div>
-          <div key="2" data-grid={{w: 2, h: 3, x: 2, y: 0}}><span className="text">2</span></div>
+          <div key="2" data-grid={{w: 2, h: 3, x: 2, y: 0, isHidden: true}}><span className="text">2</span></div>
           <div key="3" data-grid={{w: 2, h: 3, x: 4, y: 0}}><span className="text">3</span></div>
-          <div key="4" data-grid={{w: 2, h: 3, x: 6, y: 0}}><span className="text">4</span></div>
+          <div key="4" data-grid={{w: 2, h: 3, x: 6, y: 0, isHidden: true}}><span className="text">4</span></div>
           <div key="5" data-grid={{w: 2, h: 3, x: 8, y: 0}}><span className="text">5</span></div>
         </ResponsiveReactGridLayout>
       </div>

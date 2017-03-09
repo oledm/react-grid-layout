@@ -395,6 +395,7 @@ export default class ReactGridLayout extends React.Component {
     // Parse 'static'. Any properties defined directly on the grid item will take precedence.
     const draggable = Boolean(!l.static && isDraggable && (l.isDraggable || l.isDraggable == null));
     const resizable = Boolean(!l.static && isResizable && (l.isResizable || l.isResizable == null));
+    const hidden = l.isHidden
 
     return (
       <GridItem
@@ -414,11 +415,12 @@ export default class ReactGridLayout extends React.Component {
         onResizeStop={this.onResizeStop}
         isDraggable={draggable}
         isResizable={resizable}
+        isHidden={hidden}
         useCSSTransforms={useCSSTransforms && mounted}
         usePercentages={!mounted}
 
         w={l.w}
-        h={l.h}
+        h={l.isHidden ? 0 : l.h}
         x={l.x}
         y={l.y}
         i={l.i}
